@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Purchase Order</title>
+    {% load static %}
+    <!-- <link rel="icon" href="{% static 'favicon.ico' %}"> -->
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+
+    <style>
+        body {
+            font-family: "Helvetica", sans-serif;
+            font-size: 12pt;
+            margin: 20px;
+            /* Adjust the overall margin as needed */
+        }
+
+        .bold {
+            font-weight: bold;
+        }
+
+        .line {
+            border-bottom: 1px solid #000;
+        }
+
+        .vertical-line {
+            border-left: 1px solid #000;
+            height: 20px;
+            position: absolute;
+            left: 330px;
+        }
+
+        table {
+            width: 96%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            /* Adjust the left margin as needed */
+        }
+
+        th,
+        td {
+            border: 1px solid #000;
+            padding: 20px;
+            /* Adjust cell padding as needed */
+        }
+
+        th {
+            background-color: #f2f2f2;
+        }
+
+        .page {
+            page-break-before: always;
+        }
+
+        .page:before {
+            content: "";
+            display: block;
+            page-break-before: always;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        {% for purchase_order in purchase_orders %}
+        <!-- First Page Content -->
+        <div class="page" style="border: 1px solid #000; padding: 1px;">
+            <!-- <img src="{% static 'data.jpg' %}" alt="Image Alt Text" style="width: 100px; height: 50px;"/> -->
+            <!-- Company Information -->
+            <p style="position: absolute; top: 0px; left: 150px; font-weight: bold; font-size: 14pt;">Company Name: </p>
+            <p style="position: absolute; top: 40px; left: 130px; font-size: 12pt;">(Formerly known as OVOT Private
+                Limited)</p>
+            <p style="position: absolute; top: 80px; left: 90px; font-size: 12pt;">Address: </p>
+            <p style="position: absolute; top: 120px; left: 150px; font-size: 12pt;">Regd Add :- </p>
+            <p style="position: absolute; top: 160px; left: 50px; white-space: nowrap; font-size: 12pt;">Contact no. :
+            </p>
+            <p style="position: absolute; top: 160px; left: 350px; white-space: nowrap; font-size: 12pt;">Email : </p>
+
+            <!-- Vertical and Horizontal Lines -->
+            <div style="position: absolute; top: 0px; left: 700px; border-left: 1px solid #000; height: 220px;"></div>
+            <hr style="position: absolute; top: 210px; width: 96%; border: 1px solid #000;">
+
+            <!-- GST and other details -->
+            <p style="position: absolute; top: 10px; left: 710px; font-size: 12pt;">GSTIN</p>
+            <p style="position: absolute; top: 40px; left: 710px; font-size: 12pt;">PAN</p>
+            <p style="position: absolute; top: 70px; left: 710px; font-size: 12pt;">CIN</p>
+            <p style="position: absolute; top: 100px; left: 710px; white-space: nowrap; font-size: 12pt;">State Code</p>
+            <p style="position: absolute; top: 130px; left: 710px; font-size: 12pt;">IEC No.</p>
+            <p style="position: absolute; top: 160px; left: 710px; white-space: nowrap; font-size: 12pt;">AD Code</p>
+
+            <!-- Purchase Order Title -->
+            <p style="position: absolute; top: 210px; left: 500px; font-weight: bold; font-size: 14pt;">Purchase Order
+            </p>
+
+            <!-- Horizontal Line -->
+            <hr style="position: absolute; top: 240px; width: 96%; border: 1px solid #000;">
+
+            <!-- Details of Supplier Title -->
+            <p style="position: absolute; top: 240px; left: 300px; font-weight: bold; font-size: 13pt;">Details of
+                Supplier</p>
+
+            <!-- Horizontal and Vertical Lines -->
+            <hr style="position: absolute; top: 270px; width: 50%; border: 1px solid #000;">
+            <div style="position: absolute; top: 250px; left: 575px; border-left: 1px solid #000; height: 440px;"></div>
+
+            <!-- Supplier Information -->
+            <p style="position: absolute; top: 280px; left: 25px; font-size: 12pt;">Name:</p>
+            <p style="position: absolute; top: 310px; left: 25px; font-size: 12pt;">Address:</p>
+            <p style="position: absolute; top: 340px; left: 25px; font-size: 12pt;">State:</p>
+            <p style="position: absolute; top: 370px; left: 25px; font-size: 12pt;">GSTIN:</p>
+            <p style="position: absolute; top: 400px; left: 25px; font-size: 12pt;">PAN:</p>
+            <p style="position: absolute; top: 430px; left: 25px; font-size: 12pt;">Country</p>
+            <p style="position: absolute; top: 400px; left: 300px; font-size: 12pt;">City</p>
+            <p style="position: absolute; top: 430px; left: 300px; font-size: 12pt;">Pin</p>
+
+            <!-- Purchase Order Details -->
+            <p style="position: absolute; top: 250px; left: 580px; font-size: 12pt;">Po No.</p>
+            <p style="position: absolute; top: 280px; left: 580px; font-size: 12pt;">Ref. Doc. No.</p>
+            <p style="position: absolute; top: 310px; left: 580px; font-size: 12pt;">PO Amend No.</p>
+            <p style="position: absolute; top: 340px; left: 580px; font-size: 12pt;">RCM Applicable</p>
+            <p style="position: absolute; top: 370px; left: 580px; font-size: 12pt;">Transport By</p>
+            <p style="position: absolute; top: 400px; left: 580px; font-size: 12pt;">Transport Mode</p>
+            <p style="position: absolute; top: 430px; left: 580px; font-size: 12pt;">PO Remarks</p>
+            <p style="position: absolute; top: 250px; left: 850px; font-size: 12pt;">PO Date</p>
+            <p style="position: absolute; top: 280px; left: 850px; font-size: 12pt;">Ref. Doc. Date</p>
+            <p style="position: absolute; top: 310px; left: 850px; font-size: 12pt;">PO Amend Date</p>
+
+            <!-- Horizontal Line -->
+            <hr style="position: absolute; top: 460px; width: 96%; border: 1px solid #000;">
+
+            <!-- Bill To and Ship To Titles -->
+            <p style="position: absolute; top: 460px; left: 300px; font-weight: bold; font-size: 14pt;">Bill To</p>
+            <p style="position: absolute; top: 460px; left: 700px; font-weight: bold; font-size: 14pt;">Ship To</p>
+
+            <!-- Horizontal Line -->
+            <hr style="position: absolute; top: 490px; width: 96%; border: 1px solid #000;">
+
+            <!-- Bill To Information -->
+            <p style="position: absolute; top: 500px; left: 25px; font-size: 12pt;">Name:</p>
+            <p style="position: absolute; top: 530px; left: 25px; font-size: 12pt;">Address:</p>
+            <p style="position: absolute; top: 560px; left: 25px; font-size: 12pt;">State:</p>
+            <p style="position: absolute; top: 590px; left: 25px; font-size: 12pt;">GSTIN:</p>
+            <p style="position: absolute; top: 620px; left: 25px; font-size: 12pt;">PAN:</p>
+            <p style="position: absolute; top: 650px; left: 25px; font-size: 12pt;">Country</p>
+            <p style="position: absolute; top: 620px; left: 300px; font-size: 12pt;">City</p>
+            <p style="position: absolute; top: 650px; left: 300px; font-size: 12pt;">Pin</p>
+
+            <!-- Ship To Information -->
+            <p style="position: absolute; top: 500px; left: 580px; font-size: 12pt;">Name:</p>
+            <p style="position: absolute; top: 530px; left: 580px; font-size: 12pt;">Address:</p>
+            <p style="position: absolute; top: 560px; left: 580px; font-size: 12pt;">State:</p>
+            <p style="position: absolute; top: 590px; left: 580px; font-size: 12pt;">GSTIN:</p>
+            <p style="position: absolute; top: 620px; left: 580px; font-size: 12pt;">PAN:</p>
+            <p style="position: absolute; top: 650px; left: 580px; font-size: 12pt;">Country</p>
+            <p style="position: absolute; top: 620px; left: 850px; font-size: 12pt;">City</p>
+            <p style="position: absolute; top: 650px; left: 850px; font-size: 12pt;">Pin</p>
+
+            <!-- Horizontal Line -->
+            <hr style="position: absolute; top: 690px; width: 96%; border: 1px solid #000;">
+
+            <!-- Table -->
+            <table style="position: absolute; top: 680px; border-collapse: collapse; width: 96%;">
+                <tr>
+                    <th>sr. no.</th>
+                    <th>Description of Goods</th>
+                    <th>UOM</th>
+                    <th>Quantity</th>
+                    <th>Unit Price</th>
+                    <th>Disc. Rate</th>
+                    <th>Disc. Amt</th>
+                    <th>Taxable Value</th>
+                    <th>IGST</th>
+                    <th>CGST</th>
+                    <th>SGST</th>
+                </tr>
+
+                <tr>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                    <td> </td>
+                </tr>
+
+                <!-- Add more rows as needed -->
+                <!-- ... -->
+
+                <!-- Add horizontal lines -->
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+                <tr style="border-top: 1px solid #000;">
+                    <td colspan="12"></td>
+                </tr>
+
+
+                <!-- Add vertical lines -->
+                <tr>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                    <td style="border-right: 1px solid #000;"></td>
+                </tr>
+
+            </table>
+            <p
+                style="position: absolute; top: 1150px; left:  50px; white-space: nowrap;  font-weight: bold; font-size: 14pt;">
+                Pay Terms :</p>
+
+
+            <!-- Horizontal Line -->
+            <hr style="position: absolute; top: 1400px; width: 96%; border: 1px solid #000;">
+
+            <!-- Footer Information -->
+            <p style="position: absolute; top: 1410px; font-weight: bold; left: 25px; font-size: 14pt;">OVOT-0259</p>
+            <p
+                style="position: absolute; top: 1500px; font-weight: bold; left: 25px; font-size: 14pt; white-space: nowrap;">
+                Prepared By</p>
+
+            <!-- Vertical Line -->
+            <div style="position: absolute; top: 1410px; left: 420px; border-left: 1px solid #000; height: 150px;">
+            </div>
+
+            <p style="position: absolute; top: 1410px; font-weight: bold; left: 480px; font-size: 14pt;"></p>
+            <p
+                style="position: absolute; top: 1500px; font-weight: bold; left: 480px; font-size: 14pt; white-space: nowrap;">
+                Approved By</p>
+            <!-- Add a vertical line -->
+            <div style="position: absolute; top:1410px; left: 790px; border-left: 1px solid #000; height: 150px;"></div>
+
+
+            <p style="position: absolute; top: 1410px;font-weight: bold; left: 850px;  font-size: 14pt;"></p>
+            <p style="position: absolute; top: 1500px; font-weight: bold; left: 850px;  font-size: 14pt;">Authorised
+                Signatory</p>
+
+            <hr style="position: absolute; top:1550px;  width: 120%; border: 1px solid #000;">
+
+        </div>
+        <div class="page" style="border: 1px solid #000; padding: 1px;">
+
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+
+</html>
